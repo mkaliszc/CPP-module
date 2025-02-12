@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:18:13 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/12 21:56:34 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:07:48 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	PhoneBook::Add_Contact()
 	Contact new_contact;
 	std::string	input;
 
-	system("clear");
+
 	std::cout << "Contact first name : ";
 	std::getline(std::cin, input);
 	new_contact.set_first_name(input);
