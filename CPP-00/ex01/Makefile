@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = megaphone \
+FILE = Contact PhoneBook main \
 
 SRC = $(addsuffix .cpp, $(FILE))
 
