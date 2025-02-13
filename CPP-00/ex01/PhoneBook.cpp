@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:18:13 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/12 22:07:48 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:42:49 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	PhoneBook::Add_Contact()
 {
 	Contact new_contact;
 	std::string	input;
-
 
 	std::cout << "Contact first name : ";
 	std::getline(std::cin, input);
@@ -43,7 +42,7 @@ void	PhoneBook::Add_Contact()
 
 	std::cout << "Darkest secret ? ";
 	std::getline(std::cin, input);
-	new_contact.set_phone_number(input);
+	new_contact.set_darkest_secret(input);
 
 	if (count < 8)
 		Contact_list[count++] = new_contact;
@@ -58,4 +57,14 @@ void	PhoneBook::Add_Contact()
 		}
 		Contact_list[7] = new_contact;
 	}
+}
+
+int	PhoneBook::get_count()
+{
+	return this->count;
+}
+
+Contact	PhoneBook::get_contact_id(int index)
+{
+	return(this->Contact_list[index]);
 }

@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:18:25 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/12 20:38:54 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:54:25 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ void	Contact::set_last_name(std::string str)
 void	Contact::set_nick_name(std::string str)
 {
 	this->nickname = str;
-}
-
-void	Contact::set_phone_number(std::string str)
-{
-	this->phone_number = str;
 }
 
 void	Contact::set_phone_number(std::string str)

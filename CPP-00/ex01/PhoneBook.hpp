@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:45:51 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/12 21:24:23 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:08:46 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 		void	Add_Contact();
+		int		get_count();
 		Contact	get_contact_id(int);
-		void	Display_book();
 };
 
 #endif
