@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:16:18 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/13 21:16:37 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:29:10 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,11 @@ void	handle_search(PhoneBook book)
 	std::cout << "Type the contact index you want :" << std::endl;
 	while (true)
 	{
-		std::getline(std::cin, input);
 		if (input.empty())
-			std::cout << "Invalid entry : please put a number between 0 and " << book.get_count() << std::endl;
+		{
+			std::cout << "Invalid entry"  << std::endl;
+			break;
+		}
 		else if (input.compare("HOME") == 0)
 			break;
 		else if (input > "8" || input < "0")
