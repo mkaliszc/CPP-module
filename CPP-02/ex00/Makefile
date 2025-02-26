@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = fixed
 
 LCYAN = \033[1;36m
 GREEN = \033[0;32m
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = main Zombie \
+FILE = main Fixed \
 
 SRC = $(addsuffix .cpp, $(FILE))
 
