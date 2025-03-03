@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:12:46 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/26 20:05:10 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:46:41 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 {
-	std::cout << "Int Constructor called\n";
+	std::cout << "Float Constructor called\n";
 	this->FixedPoint = roundf(value * (1 << this->rawbits));
 }
 
