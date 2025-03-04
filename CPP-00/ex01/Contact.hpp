@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:25:21 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/02/12 20:47:49 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:27:56 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class Contact
 		std::string	get_nick_name();
 		std::string	get_phone_number();
 		std::string	get_darkest_secret();
-		
 };
 
 #endif

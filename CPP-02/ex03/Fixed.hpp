@@ -6,13 +6,14 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:32:52 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/03 16:13:32 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:15:39 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
-# include "Class.h"
+# include <iostream>
+# include <cmath>
 
 class Fixed
 {

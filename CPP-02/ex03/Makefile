@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = bsp
 
 LCYAN = \033[1;36m
 GREEN = \033[0;32m
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = main Fixed \
+FILE = main Fixed Point\
 
 SRC = $(addsuffix .cpp, $(FILE))
 
