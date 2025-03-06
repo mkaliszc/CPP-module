@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 20:20:24 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/03 15:11:57 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:44:36 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ std::cout << a++ << std::endl;
 std::cout << a << std::endl;
 std::cout << b << std::endl;
 std::cout << Fixed::max( a, b ) << std::endl;
+std::cout << Fixed::min( a, b ) << std::endl;
 return 0;
 }

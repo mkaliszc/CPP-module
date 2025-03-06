@@ -5,24 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 20:20:24 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/05 13:47:22 by mkaliszc         ###   ########.fr       */
+/*   Created: 2025/03/04 14:44:14 by mkaliszc          #+#    #+#             */
+/*   Updated: 2025/03/06 16:01:59 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Fixed.hpp"
+#include "ScavTrap.hpp"
 
-int	main()
+int main()
 {
-	Fixed	a;
-	// a.setRawBits(11111111.00000000);
-	Fixed b(a);
-	Fixed c;
+	ScavTrap	test("test");
+	ClapTrap	Pedro("Pedro");
+	std::cout << std::endl;
+
 	
-	c = b;
+	Pedro.attack("test");
+	test.attack("Pedro");
+	std::cout << std::endl;
+
+	test.takeDamage(0);
+	Pedro.takeDamage(20);
+	std::cout << std::endl;
 	
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	test.beRepaired(5);
+	Pedro.beRepaired(5);
+	std::cout << std::endl;
+
 	return 0;
 }

@@ -6,16 +6,17 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:25:37 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/06 16:16:33 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:16:18 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string Name) : Name(Name), Hit_points(10), Energy_points(10), Attack_damage(0){
+ClapTrap::ClapTrap() : Name("Default"), Hit_points(10), Energy_points(10), Attack_damage(0){
+	std::cout << "ClapTrap " << Name << " has been created\n";
 }
 
-ClapTrap::ClapTrap() : Name("Default"), Hit_points(10), Energy_points(10), Attack_damage(0){
+ClapTrap::ClapTrap(std::string Name) : Name(Name), Hit_points(10), Energy_points(10), Attack_damage(0){
 	std::cout << "ClapTrap " << Name << " has been created\n";
 }
 
@@ -53,7 +54,10 @@ void	ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	this->Hit_points -= amount;
+	if (amount > this->Hit_points)
+		this->Hit_points = 0;
+	else
+		this->Hit_points -= amount;
 	std::cout << "ClapTrap " << this->Name << " taken " << amount << " of damage\n";
 	if (this->Hit_points > 0)
 		std::cout << "ClapTrap " << this->Name << " hp left : " << this->Hit_points << std::endl;
@@ -63,9 +67,9 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->Hit_points <= 0)
+	if (this->Hit_points == 0)
 		std::cout << this->Name << " is dead, he can't be reapaired\n";
-	else if (this->Energy_points <= 0)
+	else if (this->Energy_points == 0)
 		std::cout << this->Name << " doesn't have any Energy_points left\n";
 	else
 	{
@@ -75,6 +79,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		if (this->Energy_points != 0)
 			this->Energy_points--;
 		std::cout << "ClapTrap " << this->Name << " energy left : " << this->Energy_points << std::endl;
-
 	}
 }

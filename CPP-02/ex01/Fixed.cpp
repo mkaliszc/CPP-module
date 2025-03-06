@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:12:46 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/03 15:46:41 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:18:45 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Constructor called\n";
+	std::cout << "Default constructor called\n";
 	this->FixedPoint = 0;
 }
 
@@ -38,7 +38,7 @@ Fixed::Fixed(const Fixed& other)
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy asignement constructor called\n";
+	std::cout << "Copy asignement operator called\n";
 	if (this != &other)
 		this->FixedPoint = other.FixedPoint;
 	return *this;

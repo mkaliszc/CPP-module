@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:44:39 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/05 17:06:28 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:11:38 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 class ClapTrap
 {
-	private:
-		std::string Name;
+	protected:
+		std::string 	Name;
 		unsigned int	Hit_points;
-		unsigned int Energy_points;
+		unsigned int 	Energy_points;
 		unsigned int	Attack_damage;
 	public:
 		ClapTrap();
