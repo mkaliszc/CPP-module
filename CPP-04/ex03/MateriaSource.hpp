@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 15:53:58 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/12 15:16:11 by mkaliszc         ###   ########.fr       */
+/*   Created: 2025/03/12 18:13:16 by mkaliszc          #+#    #+#             */
+/*   Updated: 2025/03/12 18:26:21 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
-class Character : public ICharacter
+class MateriaSource
 {
-private:
-	AMateria *inventory[4];
-	std::string	name;
-public:
-	Character();
-	Character(std::string name);
-	Character(const Character &other);
-	~Character();
-	
-	Character &operator=(const Character &other);
-	std::string const & getName() const;
-	void equip(AMateria* m);
-	void unequip(int idx);
-	void use(int idx, ICharacter& target);
+	private:
+		AMateria* source[4];
+	public:
+		MateriaSource();
+		MateriaSource(const MateriaSource &other);
+		MateriaSource	&operator=(const MateriaSource &other);
+		~MateriaSource();
+		void	learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
