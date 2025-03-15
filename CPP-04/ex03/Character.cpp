@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 17:02:55 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/12 18:09:56 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:25:08 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ Character::Character(const Character &other)
 {
 	this->name = other.name;
 	for (size_t i = 0; i < 4; i++)
-		this->inventory[i] = other.inventory[i];
+	{
+		if (other.inventory[i])
+			this->inventory[i] = other.inventory[i]->clone();
+		else
+			this->inventory[i] = NULL;
+	}
 }
 
 Character& Character::operator=(const Character &other)
@@ -73,10 +78,13 @@ void	Character::equip(AMateria *m)
 		if (!this->inventory[i])
 		{
 			inventory[i] = m;
+			std::cout << "AMateria : " << m->getType() << " equipped\n\n";
 			return ;
 		}
 	}
 	std::cout << "AMateria : " << m->getType() << " can't be equipped, inventory is full\n";
+	delete m;
+	return;
 }
 
 void	Character::unequip(int idx)
@@ -101,7 +109,7 @@ void	Character::use(int idx, ICharacter &target)
 	}
 	else if (this->inventory[idx])
 	{
-		std::cout << "Character " << this->name;
+		std::cout << "Character / " << this->name;
 		this->inventory[idx]->use(target);
 		return ;
 	}

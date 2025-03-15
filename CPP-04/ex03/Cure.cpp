@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:25:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/11 19:08:14 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:00:01 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Cure::Cure() : AMateria("cure") {
 	std::cout << "Cure has been created\n";
 }
 
-Cure::~Cure(){
+Cure::~Cure() {
 	std::cout << "Cure didn't survive the poison\n";
 }
 
@@ -31,7 +31,7 @@ Cure&	Cure::operator=(const Cure &other)
 }
 
 void	Cure::use(ICharacter &target) {
-	std::cout << "* heals " << target.getName() << "'s wounds *\n";
+	std::cout << " * heals " << target.getName() << "'s wounds *\n";
 }
 
 AMateria	*Cure::clone() const {

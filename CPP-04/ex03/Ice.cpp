@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:06:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/11 19:07:51 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:19:13 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Ice::Ice() : AMateria("ice") {
 	std::cout << "Ice has been created\n";
 }
 
-Ice::~Ice(){
+Ice::~Ice() {
 	std::cout << "Ice didn't survive the heat\n";
 }
 
@@ -31,7 +31,7 @@ Ice&	Ice::operator=(const Ice &other)
 }
 
 void	Ice::use(ICharacter &target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
+	std::cout << " * shoots an ice bolt at " << target.getName() << " *\n";
 }
 
 AMateria	*Ice::clone() const {

@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:13:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/12 18:26:21 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:46:26 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # include "IMateriaSource.hpp"
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
 	private:
 		AMateria* source[4];

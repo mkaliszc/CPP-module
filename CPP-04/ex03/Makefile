@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = main ClapTrap\
+FILE = main AMateria Character Cure Ice MateriaSource\
 
 SRC = $(addsuffix .cpp, $(FILE))
 
