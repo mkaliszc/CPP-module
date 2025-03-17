@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:13:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/10 15:43:33 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:31:57 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ class Animal
 		virtual ~Animal();
 
 		std::string		getType() const;
-		virtual void	makeSound();
+		virtual void	makeSound() = 0;
 };

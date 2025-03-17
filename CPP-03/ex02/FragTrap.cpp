@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:04:36 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/07 14:12:57 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:05:34 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ FragTrap::~FragTrap(){
 }
 
 void	FragTrap::highFivesGuys(void){
-	std::cout << "FragTrap " << this->Name << " : High fives guys !!\n";
+	std::cout << "FragTrap " << this->Name << " : High fives guys ?\n";
 }

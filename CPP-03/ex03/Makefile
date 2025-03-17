@@ -13,7 +13,7 @@ CLEANING = $(LRED)[DELETING]$(RESET)
 SUCCESS = $(LGREEN)[SUCCESS]$(RESET)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -Wno-shadow -std=c++98
 
 OBJ_DIR = obj
 
