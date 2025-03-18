@@ -6,13 +6,14 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:13:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/10 14:32:00 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:19:53 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
 # include "include.h"
+# include "Brain.hpp"
 
 class Animal
 {
