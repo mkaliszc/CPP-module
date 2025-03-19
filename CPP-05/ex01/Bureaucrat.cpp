@@ -6,11 +6,12 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:29:56 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/19 15:54:43 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:59:52 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Bureaucrat.hpp"
+# include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150) {
 	std::cout
@@ -88,7 +89,7 @@ const Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {
 	std::cout 
-		<< "Bureaucrat "
+		<< "Bureaucrat grade : "
 		<< this->grade
 		<< " called "
 		<< this->name
@@ -100,7 +101,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return("Grade too low to be incremmented or set !\n");
+	return("Grade too low !\n");
 }
 
 void	Bureaucrat::IncrementGrade()
@@ -149,6 +150,22 @@ void	Bureaucrat::setGrade(int grade)
 		this->grade = grade;
 }
 
+void	Bureaucrat::signForm(Form &toSign)
+{
+	try {
+		toSign.beSigned(*this);
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cout
+			<< "Bureaucrat "
+			<< this->name
+			<< " couldn't sign "
+			<< toSign.getName()
+			<< " because : "
+			<< e.what();
+	}
+}
 
 std::ostream	&operator<<(std::ostream &out, Bureaucrat &a) {
 	out << a.getName() << ", bureaucrat grade " << a.getGrade() << ".\n";
