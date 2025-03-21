@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = main Bureaucrat AForm ShrubberyCreationForm \
+FILE = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm\
 
 SRC = $(addsuffix .cpp, $(FILE))
 

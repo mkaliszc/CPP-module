@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:29:56 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/20 17:48:14 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:26:32 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,23 @@ void	Bureaucrat::signForm(AForm &toSign)
 			<< e.what();
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const & form) const {
+	try {
+		form.execute(*this);
+	}
+	catch(const AForm::GradeTooLowException& e)
+	{
+		std::cout
+			<< "Bureaucrat "
+			<< this->name
+			<< " couldn't sign "
+			<< form.getName()
+			<< " because : "
+			<< e.what();
+	}
+}
+
 
 std::ostream	&operator<<(std::ostream &out, Bureaucrat &a) {
 	out << a.getName() << ", bureaucrat grade " << a.getGrade() << ".\n";
