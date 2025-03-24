@@ -6,13 +6,14 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:29:56 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/21 15:08:13 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:26:32 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Bureaucrat.hpp"
+# include "AForm.hpp"
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(150) {
+Bureaucrat::Bureaucrat() : name("default"), grade(150) {
 	std::cout
 		<< "Everyone say welcome to "
 		<< this->name
@@ -22,7 +23,18 @@ Bureaucrat::Bureaucrat() : name("Default"), grade(150) {
 }
 
 Bureaucrat::Bureaucrat(int startingGrade) : name("Default") {
-	this->setGrade(startingGrade);
+	try {
+		this->setGrade(startingGrade);
+	}
+	catch(const Bureaucrat::GradeTooHighException& e) {
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Grade has been set to the highest grade possible (1)\n";
+	}
+	catch(const Bureaucrat::GradeTooLowException& e) {
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Grade has been set to the lowest grade possible (150)\n";
+	}
+	
 	std::cout
 		<< "Everyone say welcome to "
 		<< this->name
@@ -32,7 +44,17 @@ Bureaucrat::Bureaucrat(int startingGrade) : name("Default") {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int startingGrade) : name(name) {
-	this->setGrade(startingGrade);
+	try {
+		this->setGrade(startingGrade);
+	}
+	catch(const Bureaucrat::GradeTooHighException& e) {
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Grade has been set to the highest grade possible (1)\n";
+	}
+	catch(const Bureaucrat::GradeTooLowException& e) {
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Grade has been set to the lowest grade possible (150)\n";
+	}
 	std::cout 
 		<< "Everyone say welcome to "
 		<< this->name << " grade number : "
@@ -67,7 +89,7 @@ const Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {
 	std::cout 
-		<< "Bureaucrat "
+		<< "Bureaucrat grade : "
 		<< this->grade
 		<< " called "
 		<< this->name
@@ -79,7 +101,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return("Grade too low to be incremmented or set !\n");
+	return("Grade too low !\n");
 }
 
 void	Bureaucrat::IncrementGrade()
@@ -126,6 +148,39 @@ void	Bureaucrat::setGrade(int grade)
 	}
 	else
 		this->grade = grade;
+}
+
+void	Bureaucrat::signForm(AForm &toSign)
+{
+	try {
+		toSign.beSigned(*this);
+	}
+	catch(const AForm::GradeTooLowException& e)
+	{
+		std::cout
+			<< "Bureaucrat "
+			<< this->name
+			<< " couldn't sign "
+			<< toSign.getName()
+			<< " because : "
+			<< e.what();
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form) const {
+	try {
+		form.execute(*this);
+	}
+	catch(const AForm::GradeTooLowException& e)
+	{
+		std::cout
+			<< "Bureaucrat "
+			<< this->name
+			<< " couldn't sign "
+			<< form.getName()
+			<< " because : "
+			<< e.what();
+	}
 }
 
 

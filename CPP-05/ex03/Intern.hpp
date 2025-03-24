@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 19:39:42 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/21 15:12:58 by mkaliszc         ###   ########.fr       */
+/*   Created: 2025/03/21 18:45:26 by mkaliszc          #+#    #+#             */
+/*   Updated: 2025/03/24 18:09:43 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
-int main()
+class Intern
 {
-	try
-	{
-		Bureaucrat test("Gore", 150);
-		Form		contract("test 1", 150, 150);
+	public:
+		Intern();
+		Intern(const Intern &src);
+		Intern	&operator=(const Intern &src);
+		~Intern();
 	
-		std::cout << std::endl;
-		std::cout << contract;
-		test.signForm(contract);
-		std::cout << std::endl;
-		std::cout << contract;
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << e.what();
-	}
-	
-}
+		AForm*	makeForm(std::string FormName, std::string target);
+};

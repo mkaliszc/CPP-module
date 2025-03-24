@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:29:56 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/19 15:54:43 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:07:34 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,7 @@ Bureaucrat::Bureaucrat() : name("default"), grade(150) {
 }
 
 Bureaucrat::Bureaucrat(int startingGrade) : name("Default") {
-	try {
-		this->setGrade(startingGrade);
-	}
-	catch(const Bureaucrat::GradeTooHighException& e) {
-		std::cerr << e.what() << std::endl;
-		std::cerr << "Grade has been set to the highest grade possible (1)\n";
-	}
-	catch(const Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what() << std::endl;
-		std::cerr << "Grade has been set to the lowest grade possible (150)\n";
-	}
-	
+	this->setGrade(startingGrade);
 	std::cout
 		<< "Everyone say welcome to "
 		<< this->name
@@ -43,17 +32,7 @@ Bureaucrat::Bureaucrat(int startingGrade) : name("Default") {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int startingGrade) : name(name) {
-	try {
-		this->setGrade(startingGrade);
-	}
-	catch(const Bureaucrat::GradeTooHighException& e) {
-		std::cerr << e.what() << std::endl;
-		std::cerr << "Grade has been set to the highest grade possible (1)\n";
-	}
-	catch(const Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what() << std::endl;
-		std::cerr << "Grade has been set to the lowest grade possible (150)\n";
-	}
+	this->setGrade(startingGrade);
 	std::cout 
 		<< "Everyone say welcome to "
 		<< this->name << " grade number : "

@@ -6,29 +6,20 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 19:39:42 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/03/21 15:12:58 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:48:15 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "Intern.hpp"
 
 int main()
 {
-	try
-	{
-		Bureaucrat test("Gore", 150);
-		Form		contract("test 1", 150, 150);
-	
-		std::cout << std::endl;
-		std::cout << contract;
-		test.signForm(contract);
-		std::cout << std::endl;
-		std::cout << contract;
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << e.what();
-	}
-	
+	Intern	esclave;
+	AForm	*test = esclave.makeForm("RobotomyRequestForm", "home");
+	Bureaucrat	Xavier("Xavier", 1);
+
+	Xavier.signForm(*test);
+	Xavier.executeForm(*test);
+
+	delete test;
 }
