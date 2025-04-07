@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:44:23 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/03 19:02:53 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:29:58 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,55 @@ template<typename T>
 class Array
 {
 	private:
-		T	obj;
+		T				*array;
+		unsigned int	_size;
 	public:
-		Array();
-		~Array();
-};
+		Array() : size(0) {
+			this->array = new T[this->_size];
+		}
+		Array(unsigned int n) : size(n) {
+			this->array = new T[n]();
+		}
+		~Array() {
+			delete (this->array);
+		}
 
+		Array(const Array &src) : size(src.size())
+		{
+			this->array = new T[src.size()];
+			for (unsigned int i = 0; i < src.size(); i++)
+				this->array[i] = src.array[i];
+		}
+
+		Array&	operator=(const Array &src)
+		{
+			if(this->array != NULL)
+				delete (this->array);
+			if(src.size() != 0 && this != &src)
+			{
+				this->_size = src.size();
+				this->array = new T[src.size()];
+				for (unsigned int i = 0; i < src.size(); i++)
+					this->array[i] = src.array[i];
+			}
+			return(*this);	
+		}
+
+		T	&operator[](unsigned int index)
+		{
+			if (index >= _size)
+				throw std::exception();
+			return (array[index]);
+		}
+
+		const T	&operator[](unsigned int index) const
+		{
+			if (index >= _size)
+				throw std::exception();
+			return (array[index]);
+		}
+
+		unsigned int	size() const {
+			return (this->_size);
+		}
+};
