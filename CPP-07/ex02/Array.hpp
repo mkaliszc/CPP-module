@@ -6,11 +6,14 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:44:23 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/07 20:29:58 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:57:17 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
+
+# include <cstdlib>
+# include <ctime>
 
 
 template<typename T>
@@ -18,19 +21,19 @@ class Array
 {
 	private:
 		T				*array;
-		unsigned int	_size;
+		const unsigned int	_size;
 	public:
-		Array() : size(0) {
+		Array() : _size(0) {
 			this->array = new T[this->_size];
 		}
-		Array(unsigned int n) : size(n) {
+		Array(unsigned int n) : _size(n) {
 			this->array = new T[n]();
 		}
 		~Array() {
-			delete (this->array);
+			delete [] this->array;
 		}
 
-		Array(const Array &src) : size(src.size())
+		Array(const Array &src) : _size(src.size())
 		{
 			this->array = new T[src.size()];
 			for (unsigned int i = 0; i < src.size(); i++)
@@ -53,14 +56,14 @@ class Array
 
 		T	&operator[](unsigned int index)
 		{
-			if (index >= _size)
+			if (index >= this->_size)
 				throw std::exception();
 			return (array[index]);
 		}
 
 		const T	&operator[](unsigned int index) const
 		{
-			if (index >= _size)
+			if (index >= this->_size)
 				throw std::exception();
 			return (array[index]);
 		}
