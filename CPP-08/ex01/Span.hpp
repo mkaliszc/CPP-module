@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:46:59 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/12 16:52:37 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:33:41 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ class Span
 		int		shortestSpan();
 		int		longestSpan();
 
-	class NoSpaceLeft : public std::exception{
+	class NoSpaceLeft : public std::exception {
 		public:
 			virtual const char	*what() const throw();
 	};
-	class TooShort : public std::exception{
+	class TooShort : public std::exception {
 		public:
 			virtual const char	*what() const throw();
 	};

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:26:09 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/01 18:36:29 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:57:51 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,10 @@ void	convertToChar(std::string param)
 
 void	convertToInt(std::string param)
 {
-	int	n = std::atoi(param.c_str());
+	long	n = std::atol(param.c_str());
 
+	if (n > 2147483647 || n < -2147483648)
+		error();
 	if (n > 32 && n < 127)
 		std::cout << "char: " << static_cast<char>(n) << std::endl;
 	else
