@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:44:23 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/08 13:57:17 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:41:31 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ class Array
 	private:
 		T				*array;
 		const unsigned int	_size;
+
 	public:
-		Array() : _size(0) {
+		Array() : array(NULL), _size(0) {
 			this->array = new T[this->_size];
 		}
 		Array(unsigned int n) : _size(n) {
