@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:44:23 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/17 17:41:31 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/18 13:54:21 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Array
 {
 	private:
 		T				*array;
-		const unsigned int	_size;
+		unsigned int	_size;
 
 	public:
 		Array() : array(NULL), _size(0) {
@@ -44,7 +44,7 @@ class Array
 		Array&	operator=(const Array &src)
 		{
 			if(this->array != NULL)
-				delete (this->array);
+				delete[] this->array;
 			if(src.size() != 0 && this != &src)
 			{
 				this->_size = src.size();
