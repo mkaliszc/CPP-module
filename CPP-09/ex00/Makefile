@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-FILE = main \
+FILE = main BitcoinExchange \
 
 SRC = $(addsuffix .cpp, $(FILE))
 
