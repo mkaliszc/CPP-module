@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:09:43 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/22 21:16:02 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:46:25 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ class BitcoinExchange
 		void	FillMap(std::string DataBase); // * fill the map in private without checking
 
 		void	CalculateValue(std::string infile); // TODO : calculate the value and validate at the same time
-
-		bool	ValidValue(std::string Date);
-		bool	ValidDate(std::string);
 
 		std::map<std::string, float>::iterator	ClosestPreviousDate(std::string date);
 
