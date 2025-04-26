@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:09:43 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/23 19:46:25 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:37:37 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, double> _data;
+		std::map<std::string, float> _data;
 
 	public:
 		BitcoinExchange();
@@ -30,10 +30,10 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange &src);
 		~BitcoinExchange();
 
-		void	FillMap(std::string DataBase); // * fill the map in private without checking
+		void	FillMap(std::string DataBase);
 
-		void	CalculateValue(std::string infile); // TODO : calculate the value and validate at the same time
+		void	CalculateValue(std::string infile);
 
-		std::map<std::string, float>::iterator	ClosestPreviousDate(std::string date);
+		std::map<std::string, float>::iterator	findDateInMap(std::string date);
 
 };

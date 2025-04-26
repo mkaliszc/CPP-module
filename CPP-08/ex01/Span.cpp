@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:50:52 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/12 17:06:02 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:28:51 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	Span::shortestSpan()
 	std::vector<int>	_copy = this->_span;
 
 	std::sort(_copy.begin(), _copy.end());
-	for (size_t i = 0; i < _copy.size(); i++)
+	for (size_t i = 0; i < _copy.size() - 1; i++)
 	{
 		if (my_absolute(_copy[i + 1] - _copy[i]) < ShortestSpan)
 			ShortestSpan = my_absolute(_copy[i + 1] - _copy[i]);

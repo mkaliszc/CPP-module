@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:45:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/14 14:35:56 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/26 17:25:55 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main()
 		Span	test(size);
 
 		srand(time(NULL));
-		for (int i = 0; i < size + 2; i++) {
+		for (int i = 0; i < size; i++) {
 			value = rand() % size;
 			test.addNumber(value);
 			std::cout << value << " ";

@@ -5,23 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 17:09:03 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/24 18:59:18 by mkaliszc         ###   ########.fr       */
+/*   Created: 2025/04/26 14:26:24 by mkaliszc          #+#    #+#             */
+/*   Updated: 2025/04/26 17:06:05 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "BitcoinExchange.hpp"
+# include "RPN.hpp"
 
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error: Not enough arguments." << std::endl << "Usage: ./btc <file_name>" << std::endl;
-		exit(0);
+		std::cout << "Error: invalid args.\nUsage: ./RPN '<arg>'\n";
+		return(1);
 	}
-	
-	BitcoinExchange	test;
+	RPN test;
 
-	test.FillMap("data.csv");
-	test.CalculateValue(argv[1]);
+	test.calculate(argv[1]);
 }

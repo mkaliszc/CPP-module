@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:09:27 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/23 20:07:00 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:14:24 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	BitcoinExchange::FillMap(std::string DataBase)
 		exit(1);
 	std::getline(input,date);
 	while (std::getline(input, date, ',') && std::getline(input, value))
-			this->_data.insert(std::make_pair(date, std::atof(value.c_str())));
+			this->_data.insert(std::pair<std::string, float>(date, std::atof(value.c_str())));
 	input.close();
 }
 
@@ -43,7 +43,7 @@ bool isLeapYear(int year) {
     return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 }
 
-bool	ValidDate(std::string buffer)
+bool	ValidDate(std::string &buffer)
 {
 	if (buffer.length() != 11)
 		return (false);
@@ -52,7 +52,7 @@ bool	ValidDate(std::string buffer)
 	else if (buffer[10] != ' ')
 		return (false);
 	
-    for (int i = 0; i < buffer.size(); ++i)
+    for (size_t i = 0; i < buffer.size() - 1; ++i)
 	{
         if (i == 4 || i == 7) 
 			continue;
@@ -69,43 +69,65 @@ bool	ValidDate(std::string buffer)
 	if (month > 12 || month < 1 || year < 0)
 		return (false);
 
-    int daysInMonth[] = { 31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    if (day > daysInMonth[month - 1])
-        return false;
-	
+	int daysInMonth[] = { 31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	if (day > daysInMonth[month - 1])
+		return (false);
+
+	return (true);
 }
 
 bool	ValidValue(std::string buffer)
 {
+	bool	pointFound = false;
 	for (size_t i = 1; i < buffer.size(); i++)
 	{
-		/* code */
+		if (buffer[i] == '.' && pointFound == false)
+			pointFound = true;
+		else if (!std::isdigit(buffer[i]))
+			return(false);
 	}
-	
+	double	nbr = std::atof(buffer.substr(1, buffer.size()).c_str());
+
+	if (nbr > 1000 || nbr < 0)
+		return (false);
+	return (true);
+}
+
+std::map<std::string, float>::iterator	BitcoinExchange::findDateInMap(std::string date)
+{
+	std::map<std::string, float>::iterator test = _data.lower_bound(date);
+
+	if (test != _data.end() && test->first == date)
+		return (test);
+	else if (test == _data.begin())
+		return (_data.end());
+	return(test--);
 }
 
 void	BitcoinExchange::CalculateValue(std::string infile)
 {
 	std::ifstream input(infile.c_str());
-	std::string	bufferDate;
-	std::string bufferValue;
+	std::string	Date;
+	std::string Value;
 
 	if (!input.is_open())
 		exit(1);
-	std::getline(input, bufferDate);
-	while (std::getline(input, bufferDate, '|') && std::getline(input, bufferValue))
+	std::getline(input, Date);
+	while (std::getline(input, Date, '|') && std::getline(input, Value))
 	{
-		if(!ValidDate(bufferDate))
-			std::cout << "Error: bad input => " << bufferDate << std::endl;
-		else if (!ValidValue(bufferDate))
-		{
-			// ! error	
-		}
+		if(!ValidDate(Date))
+			std::cout << "Error: bad input => " << Date << std::endl;
+		else if (!ValidValue(Value))
+			std::cout << "Error: invalid value" << std::endl;
 		else
 		{
-			// * find date in map and calcul
+			std::map<std::string, float>::iterator it = findDateInMap(Date);
+			
+			if (it == _data.end() && Date != it->first)
+				std::cout << "Error: date not found in data base." << std::endl;
+			else
+				std::cout << Date << " => " << Value.substr(1, Value.size()) << " = " << std::atof(Value.substr(1, Value.size()).c_str()) * it->second << std::endl;
 		}
 	}
-	
-	// Todo : check for valid date / value and write the message, if any error occurs just write an Error message
 }
