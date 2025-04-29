@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:09:27 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/26 14:14:24 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:04:55 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,27 @@ std::map<std::string, float>::iterator	BitcoinExchange::findDateInMap(std::strin
 void	BitcoinExchange::CalculateValue(std::string infile)
 {
 	std::ifstream input(infile.c_str());
-	std::string	Date;
-	std::string Value;
+	std::string	Line;
 
 	if (!input.is_open())
 		exit(1);
-	std::getline(input, Date);
-	while (std::getline(input, Date, '|') && std::getline(input, Value))
+	std::getline(input, Line);
+	while (std::getline(input, Line))
 	{
+		if (Line.empty())
+		{
+			std::cout << "Error: bad input => empty line" << std::endl;
+			continue;
+		}
+
+		std::istringstream iss(Line);
+		std::string Date, Value;
+
+		if (!std::getline(iss, Date, '|') || !std::getline(iss, Value))
+		{
+			std::cout << "Error: bad input => " << Line << std::endl;
+			continue;
+		}
 		if(!ValidDate(Date))
 			std::cout << "Error: bad input => " << Date << std::endl;
 		else if (!ValidValue(Value))

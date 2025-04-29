@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = PmergeMe
 
 LCYAN = \033[1;36m
 GREEN = \033[0;32m
