@@ -6,19 +6,22 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:11:47 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/28 19:22:39 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/05/01 16:16:05 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
-# include <iostream>
-# include <sstream>
-# include <ctime>
-# include <deque>
-# include <vector>
-# include <string>
-# include <algorithm>
+#include <vector>
+#include <deque>
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+#include <iomanip>
+#include <sstream>
+#include <cstdio>
+#include <algorithm>
 
 class PmergeMe
 {
@@ -26,8 +29,8 @@ class PmergeMe
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 
-		time_t	_vectime;
-		time_t	_deqtime;
+		double	_vectime;
+		double	_deqtime;
 
 		PmergeMe(const PmergeMe &src);
 		PmergeMe& operator=(const PmergeMe &src);
@@ -38,5 +41,8 @@ class PmergeMe
 		void	parsing(char **argv);
 		void	vecSort();
 		void	MergeVec(std::vector<int> &vec);
+		void 	insertJacobSthal(std::vector<std::pair<int, int> >& pairs, std::vector<int>& result, std::vector<bool>& inserted);
+
+
 		void	deqSort();
 };

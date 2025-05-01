@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:26:30 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/28 17:30:49 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/05/01 16:06:07 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int	main(int argc, char **argv)
 	PmergeMe	sorter;
 
 	sorter.parsing(argv);
+	sorter.vecSort();
 }
