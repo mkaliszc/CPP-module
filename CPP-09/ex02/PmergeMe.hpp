@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:11:47 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/05/01 16:16:05 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:53:18 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ class PmergeMe
 
 		void	parsing(char **argv);
 		void	vecSort();
-		void	MergeVec(std::vector<int> &vec);
-		void 	insertJacobSthal(std::vector<std::pair<int, int> >& pairs, std::vector<int>& result, std::vector<bool>& inserted);
-
-
 		void	deqSort();
+		void	MergeVec(std::vector<int> &vec);
+		void	MergeDeq(std::deque<int> &vec);
+		void 	insertJacobSthalV(std::vector<std::pair<int, int> >& pairs, std::vector<int>& result, std::vector<bool>& inserted);
+		void	insertJacobSthalD(std::deque<std::pair<int, int> >& pairs, std::deque<int>& result, std::deque<bool>& inserted);
+
+		void	DisplayResult();
 };

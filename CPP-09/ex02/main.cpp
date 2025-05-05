@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:26:30 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/05/01 16:06:07 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:53:38 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ int	main(int argc, char **argv)
 
 	sorter.parsing(argv);
 	sorter.vecSort();
+	sorter.deqSort();
+	sorter.DisplayResult();
 }
