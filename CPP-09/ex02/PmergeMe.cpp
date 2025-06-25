@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:11:50 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/05/05 15:18:54 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:13:24 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,36 @@ void	PmergeMe::parsing(char **argv)
 }
 
 template<typename Container>
-Container	getJacobsthalSequence(size_t n)
-{
-	Container	sequence;
-	sequence.push_back(0);
-	sequence.push_back(1);
-
-	for (size_t i = 2; sequence.size() < n; i++)
-	{
-		size_t	next = sequence[i - 1] + 2 * sequence[i - 2];
-		if (next >= n)
-			break;
-		sequence.push_back(next);
-	}
-	return (sequence);  
+Container getJacobsthalSequence(size_t n) {
+    if (n == 0) return Container();
+    
+    Container order;
+    
+    std::vector<size_t> jacobsthal;
+    jacobsthal.push_back(1);
+    jacobsthal.push_back(3);
+    
+    size_t i = 2;
+    while (jacobsthal.back() < n) {
+        size_t next = jacobsthal[i-1] + 2 * jacobsthal[i-2];
+        jacobsthal.push_back(next);
+        i++;
+    }
+    
+    size_t inserted = 0;
+    for (size_t j = 0; j < jacobsthal.size() && inserted < n; j++) {
+        size_t end = std::min(jacobsthal[j], n);
+        size_t start = (j == 0) ? 1 : jacobsthal[j-1] + 1;
+        
+        for (size_t k = end; k >= start && k > 0; k--) {
+            if (inserted < n) {
+                order.push_back(k - 1);
+                inserted++;
+            }
+        }
+    }
+    
+    return order;
 }
 
 void    PmergeMe::DisplayResult()
@@ -66,6 +82,7 @@ void    PmergeMe::DisplayResult()
 		std::cout << *it << " ";
 		it++;
 	}
+    std::cout << std::endl;
     std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " 
               << std::fixed << std::setprecision(5) << _vectime << " us" << std::endl;
 	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque : " 
@@ -156,29 +173,26 @@ void	PmergeMe::MergeVec(std::vector<int>& vec)
     vec = mainChain;
 }
 
-void PmergeMe::insertJacobSthalV(std::vector<std::pair<int, int> >& pairs, std::vector<int>& result, std::vector<bool>& inserted)
-{
-    std::vector<int> jacobsthalSequence = getJacobsthalSequence<std::vector<int> >(pairs.size());
-
-    for (size_t i = 0; i < jacobsthalSequence.size(); ++i) 
-    {
-        int idx = jacobsthalSequence[i];
-        if (idx < static_cast<int>(pairs.size()) && !inserted[idx]) 
-        {
-            std::vector<int>::iterator it = result.begin();
-            while (it != result.end() && *it < pairs[idx].second)
-                ++it;
+void PmergeMe::insertJacobSthalV(std::vector<std::pair<int, int> >& pairs, 
+                                 std::vector<int>& result, 
+                                 std::vector<bool>& inserted) {
+    
+    std::vector<int> insertionOrder = getJacobsthalSequence<std::vector<int> >(pairs.size());
+    
+    for (size_t i = 0; i < insertionOrder.size(); ++i) {
+        int idx = insertionOrder[i];
+        if (idx < static_cast<int>(pairs.size()) && !inserted[idx]) {
+            std::vector<int>::iterator it = std::lower_bound(
+                result.begin(), result.end(), pairs[idx].second);
             result.insert(it, pairs[idx].second);
             inserted[idx] = true;
         }
     }
-	for (size_t i = 0; i < pairs.size(); ++i) 
-    {
-        if (!inserted[i]) 
-        {
-            std::vector<int>::iterator it = result.begin();
-            while (it != result.end() && *it < pairs[i].second)
-                ++it;
+    
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        if (!inserted[i]) {
+            std::vector<int>::iterator it = std::lower_bound(
+                result.begin(), result.end(), pairs[i].second);
             result.insert(it, pairs[i].second);
         }
     }
@@ -268,29 +282,26 @@ void	PmergeMe::MergeDeq(std::deque<int>& vec)
     vec = mainChain;
 }
 
-void PmergeMe::insertJacobSthalD(std::deque<std::pair<int, int> >& pairs, std::deque<int>& result, std::deque<bool>& inserted)
-{
-    std::deque<int> jacobsthalSequence = getJacobsthalSequence<std::deque<int> >(pairs.size());
-
-    for (size_t i = 0; i < jacobsthalSequence.size(); ++i) 
-    {
-        int idx = jacobsthalSequence[i];
-        if (idx < static_cast<int>(pairs.size()) && !inserted[idx]) 
-        {
-            std::deque<int>::iterator it = result.begin();
-            while (it != result.end() && *it < pairs[idx].second)
-                ++it;
+void PmergeMe::insertJacobSthalD(std::deque<std::pair<int, int> >& pairs, 
+                                 std::deque<int>& result, 
+                                 std::deque<bool>& inserted) {
+    
+    std::deque<int> insertionOrder = getJacobsthalSequence<std::deque<int> >(pairs.size());
+    
+    for (size_t i = 0; i < insertionOrder.size(); ++i) {
+        int idx = insertionOrder[i];
+        if (idx < static_cast<int>(pairs.size()) && !inserted[idx]) {
+            std::deque<int>::iterator it = std::lower_bound(
+                result.begin(), result.end(), pairs[idx].second);
             result.insert(it, pairs[idx].second);
             inserted[idx] = true;
         }
     }
-	for (size_t i = 0; i < pairs.size(); ++i)
-    {
-        if (!inserted[i]) 
-        {
-            std::deque<int>::iterator it = result.begin();
-            while (it != result.end() && *it < pairs[i].second)
-                ++it;
+    
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        if (!inserted[i]) {
+            std::deque<int>::iterator it = std::lower_bound(
+                result.begin(), result.end(), pairs[i].second);
             result.insert(it, pairs[i].second);
         }
     }

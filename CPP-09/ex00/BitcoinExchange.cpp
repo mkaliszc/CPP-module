@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaliszc <mkaliszc@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:09:27 by mkaliszc          #+#    #+#             */
-/*   Updated: 2025/04/28 17:04:55 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:17:36 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ std::map<std::string, float>::iterator	BitcoinExchange::findDateInMap(std::strin
 		return (test);
 	else if (test == _data.begin())
 		return (_data.end());
-	return(test--);
+	return(--test);
 }
 
 void	BitcoinExchange::CalculateValue(std::string infile)
